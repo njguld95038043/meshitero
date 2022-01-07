@@ -11,11 +11,17 @@ class PostImagesController < ApplicationController
   end
 
   def index
-    @post_images = List.all
+    @post_images = PostImage.all
   end
 
   def show
-    @post_image = List.find(params)
+    @post_image = PostImage.find(params[:id])
+  end
+  
+  def destroy
+    @post_image = PostImage.find(params[:id])
+    @post_image.destroy
+    redirect_to index
   end
 
   private
